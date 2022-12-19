@@ -1,0 +1,32 @@
+{
+	"status": "success",
+	"data": [
+		{
+			"id": 6545,
+			"name": "Banana Bubs",
+			"description": "<p>Banan/gräddkola</p>\n<p>Innehållsförteckning: Glukos-fruktossirap, socker, majsstärkelse, vatten, surhetsreglerande medel (äppelsyra, natriumcitrat), potatisprotein, aromämnen, färgämnen: (E150d, E100), kokosolja, ytbehandlingsmedel (karnaubavax).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
+			"price": 8,
+			"on_sale": false,
+			"images": {
+				"thumbnail": "/storage/products/thumbnails/156622-300x300.png",
+				"large": "/storage/products/156622.png"
+			},
+			"stock_status": "instock",
+			"stock_quantity": null
+		},
+		{
+			"id": 7942,
+			"name": "Sura Vattenmelonnappar",
+			"description": "<p>Sursockrad gelé med vattenmelon</p>\n<p>Innehållsförteckning: Socker, glukossirap, <strong>VETESTÄRKELSE</strong>, vatten, modifierad majsstärkelse, syror (E270, E296, E330, E350), modifierad potatisstärkelse, färgämne (koncentrat från spirulina, safflor), arom, fruktjuice koncentrat (svart morot).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
+			"price": 7,
+			"on_sale": false,
+			"images": {
+				"thumbnail": "/storage/products/thumbnails/sur_vattenmelonnapp-300x300.jpg",
+				"large": "/storage/products/sur_vattenmelonnapp.jpg"
+			},
+			"stock_status": "instock",
+			"stock_quantity": null
+		}
+		// etc
+	]
+}

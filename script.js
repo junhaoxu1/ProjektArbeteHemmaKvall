@@ -9,8 +9,9 @@ const fetchCandyList = async () => {
 };
 
 fetchCandyList().then(data => {
-    someDataEl.innerHTML = `<p>Show Data: ${data['data'][0]['name']}</p>`;
-    console.log(data['data'][0]['name']);
+    someDataEl.innerHTML = `<h2>${data['data'][0]['name']}</h2>
+                            <p>${data['data'][0]['description']}</p>`;
+    console.log(data['data'][0]['images']['large']);
 
-    showImageEl.src = data['data'][0]['images']['large'] 
+    showImageEl.src = data['data'][0]['images']['large']
 });

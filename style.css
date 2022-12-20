@@ -2,17 +2,20 @@ section {
     padding: 4rem 0 3rem;
 }
 
+/* Container för produkter */
 .container {
     max-width: 1068px;
     width: 100%;
     margin: auto;
 }
 
+/* Titel för produkt sektionen: Shop */
 .section-title {
     text-align: center;
     padding-bottom: 5%;
 }
 
+/* Div klass för varje produkt */
 .shop-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, auto));
@@ -24,7 +27,34 @@ section {
     margin-top: 0rem;
 }
 
-
+/* Div klass för varje produkt box */
 .product-box{
     position: relative;
+}
+
+.product-box:hover{
+    padding: 10px;
+    border: 1px solid black;
+    transition: 0.4s;
+}
+
+/* Klass för produkt titel*/
+.product-title {
+
+}
+
+/* Varukorg symbol */
+.add-cart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.add-cart:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(56, 217, 24);
 }

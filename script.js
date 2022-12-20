@@ -13,5 +13,5 @@ fetchCandyList().then(data => {
                             <p>${data['data'][0]['description']}</p>`;
     console.log(data['data'][0]['images']['large']);
 
-    showImageEl.src = data['data'][0]['images']['large']
+    showImageEl.src = `https://bortakvall.se${data['data'][0]['images']['large']}`
 });

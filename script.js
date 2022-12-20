@@ -1,9 +1,10 @@
 const showImageEl = document.querySelector("#showImage");
 const someDataEl = document.querySelector("#someData");
+const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
 
 const fetchCandyList = async () => {
-    const res = await fetch("https://www.bortakvall.se/api/products")
-    const data = await res.json()
+    const res = await fetch("https://www.bortakvall.se/api/products");
+    const data = await res.json();
 
     return data["data"];
 };
@@ -17,17 +18,15 @@ fetchCandyList().then(data => {
         addNewData.innerText = `${singleData['name']}`
 
         let descriptionData = document.createElement("p");
-
+        let hideDescriptionTag = `${singleData['description']}`
         newData.appendChild(descriptionData);
-        descriptionData.innerText = `${singleData['description']}`
+        descriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
 
         let addImage = document.createElement("img");
         newData.appendChild(addImage);
-        addImage.src = `https://bortakvall.se${singleData['images']['large']}`
-
-
+        addImage.src = `https://bortakvall.se${singleData['images']['large']}`;
 
     console.log(singleData['name']);
 
-    })
+    });
 });

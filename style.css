@@ -1,0 +1,30 @@
+section {
+    padding: 4rem 0 3rem;
+}
+
+.container {
+    max-width: 1068px;
+    width: 100%;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.shop-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    gap: 1.5rem;
+    justify-content: space-evenly;
+}
+
+.shop{
+    margin-top: 0rem;
+}
+
+
+.product-box{
+    position: relative;
+}

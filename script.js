@@ -5,13 +5,29 @@ const fetchCandyList = async () => {
     const res = await fetch("https://www.bortakvall.se/api/products")
     const data = await res.json()
 
-    return data
+    return data["data"];
 };
 
 fetchCandyList().then(data => {
-    someDataEl.innerHTML = `<h2>${data['data'][0]['name']}</h2>
-                            <p>${data['data'][0]['description']}</p>`;
-    console.log(data['data'][0]['images']['large']);
+    data.forEach(singleData => {
+        let newData = document.createElement("div");
+        let addNewData = document.createElement("h2");
+        someDataEl.appendChild(newData);
+        newData.appendChild(addNewData);
+        addNewData.innerText = `${singleData['name']}`
 
-    showImageEl.src = `https://bortakvall.se${data['data'][0]['images']['large']}`
+        let descriptionData = document.createElement("p");
+
+        newData.appendChild(descriptionData);
+        descriptionData.innerText = `${singleData['description']}`
+
+        let addImage = document.createElement("img");
+        newData.appendChild(addImage);
+        addImage.src = `https://bortakvall.se${singleData['images']['large']}`
+
+
+
+    console.log(singleData['name']);
+
+    })
 });

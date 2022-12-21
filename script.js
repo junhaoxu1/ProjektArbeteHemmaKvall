@@ -1,6 +1,5 @@
 const showImageEl = document.querySelector("#showImage");
 const someDataEl = document.querySelector("#someData");
-const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
 
 const fetchCandyList = async () => {
     const res = await fetch("https://www.bortakvall.se/api/products");
@@ -17,11 +16,6 @@ fetchCandyList().then(data => {
         someDataEl.appendChild(newData);
         newData.appendChild(addNewData);
         addNewData.innerText = `${singleData['name']}`
-
-        let descriptionData = document.createElement("p");
-        let hideDescriptionTag = `${singleData['description']}`
-        newData.appendChild(descriptionData);
-        // escriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
 
         let addImage = document.createElement("img");
         newData.appendChild(addImage);

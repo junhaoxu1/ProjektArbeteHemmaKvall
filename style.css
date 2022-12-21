@@ -1,0 +1,108 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    list-style: none;
+    text-decoration: none;
+}
+
+.header {
+    z-index: 999;
+}
+
+.banner {
+    background-color: rgb(211, 219, 219);
+    background-image: url(./img/godisbanner1.jpg);
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(98, 187, 255);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: black;
+    font-size: 50px;
+    text-align: center;
+}
+
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    border-top: 1px solid rgb(185, 185, 185);
+    border-bottom: 1px solid rgb(185, 185, 185);
+    /*border: 1px solid black;*/
+    /*box-shadow: 0px 0.1px 1px 1px; */
+}
+
+.main-nav ul{
+    flex: 1;
+    text-align: center;
+    color: black;  
+    text-decoration: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 30px;
+    font-size: 25;
+    color: black;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    background-color: rgb(98, 187, 255);
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgb(98, 187, 255);
+    padding: 15px;
+}
+
+
+
+/* KUNDVAGN */
+
+/* Varukorg symbol */
+.bx-cart {
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(85, 85, 85);
+}
+
+/* Varukorgs fönster */
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: rgb(231, 231, 231);
+    z-index: 100;
+    transition: 0.3s;
+}

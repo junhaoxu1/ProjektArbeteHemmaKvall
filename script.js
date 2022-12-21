@@ -29,7 +29,8 @@ fetchCandyList().then(data => {
         addImage.height = 150;
         addImage.width = 150;
 
-    console.log(singleData['name']);
-
+        let addPrice = document.createElement("h3");
+        newData.appendChild(addPrice)
+        addPrice.innerText = `${singleData['price']} KR`
     });
 });

@@ -16,7 +16,7 @@
 .banner {
     background-color: rgb(211, 219, 219);
     background-image: url(./img/godisbanner1.jpg);
-    width: 100vw;
+    width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;

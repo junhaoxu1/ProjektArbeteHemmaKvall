@@ -33,4 +33,5 @@ fetchCandyList().then(data => {
         newData.appendChild(addPrice)
         addPrice.innerText = `${singleData['price']} KR`
     });
+
 });

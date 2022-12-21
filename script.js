@@ -1,6 +1,8 @@
 const showImageEl = document.querySelector("#showImage");
 const someDataEl = document.querySelector("#someData");
 const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
+const descriptionDataEl = document.querySelector("#descriptionData")
+let clicked = true;
 
 const fetchCandyList = async () => {
     const res = await fetch("https://www.bortakvall.se/api/products");
@@ -18,11 +20,6 @@ fetchCandyList().then(data => {
         newData.appendChild(addNewData);
         addNewData.innerText = `${singleData['name']}`
 
-        let descriptionData = document.createElement("p");
-        let hideDescriptionTag = `${singleData['description']}`
-        newData.appendChild(descriptionData);
-        // escriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
-
         let addImage = document.createElement("img");
         newData.appendChild(addImage);
         addImage.src = `https://bortakvall.se${singleData['images']['large']}`;
@@ -32,6 +29,23 @@ fetchCandyList().then(data => {
         let addPrice = document.createElement("h3");
         newData.appendChild(addPrice)
         addPrice.innerText = `${singleData['price']} KR`
-    });
 
+        let addInfo = document.createElement("button");
+        newData.appendChild(addInfo)
+        addInfo.innerText = "INNEHÅLL"
+
+
+        addInfo.addEventListener("click", function (e) {
+            if (clicked) {
+                let hideDescriptionTag = `${singleData['description']}`;
+                newData.appendChild(descriptionDataEl);
+                descriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
+                descriptionDataEl.classList.remove("d-none");
+                clicked = false;
+            } else {
+                descriptionDataEl.classList.add("d-none");
+                clicked = true;
+            }
+        });
+    });
 });

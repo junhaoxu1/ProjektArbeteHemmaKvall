@@ -13,6 +13,7 @@ fetchCandyList().then(data => {
     data.forEach(singleData => {
         let newData = document.createElement("div");
         let addNewData = document.createElement("h2");
+        newData.classList.add("col");
         someDataEl.appendChild(newData);
         newData.appendChild(addNewData);
         addNewData.innerText = `${singleData['name']}`
@@ -20,11 +21,13 @@ fetchCandyList().then(data => {
         let descriptionData = document.createElement("p");
         let hideDescriptionTag = `${singleData['description']}`
         newData.appendChild(descriptionData);
-        descriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
+        // escriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
 
         let addImage = document.createElement("img");
         newData.appendChild(addImage);
         addImage.src = `https://bortakvall.se${singleData['images']['large']}`;
+        addImage.height = 150;
+        addImage.width = 150;
 
     console.log(singleData['name']);
 

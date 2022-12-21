@@ -44,8 +44,6 @@ h1 {
     padding: 50px;
     border-top: 1px solid rgb(185, 185, 185);
     border-bottom: 1px solid rgb(185, 185, 185);
-    /*border: 1px solid black;*/
-    /*box-shadow: 0px 0.1px 1px 1px; */
 }
 
 .main-nav ul{
@@ -85,7 +83,7 @@ a:hover {
 
 
 
-/* KUNDVAGN */
+/* VARUKORG */
 
 /* Varukorg symbol */
 .bx-cart {
@@ -106,3 +104,93 @@ a:hover {
     z-index: 100;
     transition: 0.3s;
 }
+
+.cart-title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.cart-box {
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cart-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.detail-box {
+    display: grid;
+    row-gap: 0.5rem;
+}
+
+.cart-product-title {
+    font-size: 1rem;
+}
+
+.cart-price {
+    font-weight: 500;
+}
+
+.cart-quantity {
+    border: 1px solid black;
+    outline-color: black;
+    width: 2.5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.cart-remove {
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    justify-self: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid black;
+}
+
+.total-title {
+    font-size: 1rem;
+    margin-top: 1rem;
+
+}
+
+.total-price {
+    margin-left: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-buy {
+    display: flex;
+    margin: 1.5rem auto 0 auto;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(98, 187, 255);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-buy:hover {
+    background-color: green;
+}
+
+#close-cart {
+    position: absolute;
+    top: 1rem;
+    right: 0.8rem;
+    font-size: 2rem;
+    color: black;
+    cursor: pointer;
+}
+

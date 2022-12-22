@@ -5,3 +5,65 @@
     border: 0.1px solid black;
     margin: 5px 0 0 5px;
 }
+
+.pop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 750px;
+  max-width: 80%;
+}
+
+.pop.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popHeader {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.popHeader .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.popHeader .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.descriptionData {
+  padding: 10px 15px;
+}
+
+  
+  #popOverlay {
+    position: fixed;
+    opacity: 0; 
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
+  
+  #popOverlay.active {
+    opacity: 1; 
+    pointer-events: all;
+  }

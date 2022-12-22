@@ -1,9 +1,10 @@
-const showImageEl = document.querySelector("#showImage");
-const someDataEl = document.querySelector("#someData");
+const showImageEl = document.querySelector('#showImage');
+const someDataEl = document.querySelector('#someData');
 const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
-const descriptionDataEl = document.querySelector("#descriptionData");
-
-let clicked = true;
+const descriptionDataEl = document.querySelector('.descriptionData');
+const popOverlayEl = document.querySelector('#popOverlay');
+const titleEl = document.querySelector('.title')
+const popUpImageEl = document.querySelector("#popUpImage");
 
     fetchCandyList().then(data => {
         data.forEach(singleData => {
@@ -16,30 +17,44 @@ let clicked = true;
     
             let addImage = document.createElement("img");
             newData.appendChild(addImage);
-            addImage.src = `https://bortakvall.se${singleData['images']['large']}`;
-            addImage.height = 150;
-            addImage.width = 150;
+            addImage.src = `https://bortakvall.se${singleData['images']['thumbnail']}`;
     
             let addPrice = document.createElement("h3");
             newData.appendChild(addPrice)
             addPrice.innerText = `${singleData['price']} KR`
 
             let addInfo = document.createElement("button");
+            addInfo.setAttribute("data-pop-target", "#pop")
             newData.appendChild(addInfo)
             addInfo.innerText = "INNEHÅLL"
-            addInfo.addEventListener("click", function (e) {
-                if (clicked) {
-                    let hideDescriptionTag = `${singleData['description']}`;
-                    newData.appendChild(descriptionDataEl);
-                    descriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "")
-                    descriptionDataEl.classList.remove("d-none");
-                    clicked = false;
-                } else {
-                    descriptionDataEl.classList.add("d-none");
-                    clicked = true;
-                }
+
+            let hideDescriptionTag = `${singleData['description']}`;
+            addInfo.addEventListener("click", () => {
+                const popWindow = document.querySelector(addInfo.dataset.popTarget)
+                popUpImageEl.src = `https://bortakvall.se${singleData['images']['large']}`;
+                descriptionDataEl.innerText = hideDescriptionTag.replace(tagRegExp, "");
+                titleEl.innerText = `${singleData['name']}`
+                openWindow(popWindow)
             });
         });
-    });
+        
+        const openWindow = popUp => {
+            if (popUp == null) return
+            popUp.classList.add('active')
+            popOverlayEl.classList.add('active')
+        }
 
+        const closeWindow = popUp => {
+            if (popUp == null) return
+            popUp.classList.remove('active')
+            popOverlayEl.classList.remove('active')
+        }
+
+        popOverlayEl.addEventListener('click', () => {
+            const windows = document.querySelectorAll('.pop.active')
+            windows.forEach(popUp => {
+                closeWindow(popUp)
+            })
+        })
+    });
 

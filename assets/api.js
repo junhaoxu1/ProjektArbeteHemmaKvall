@@ -9,5 +9,3 @@ const fetchCandyList = async () => {
 
     return data["data"];
 };
-
-let x = 0;

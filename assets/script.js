@@ -6,34 +6,34 @@ const popOverlayEl = document.querySelector('#popOverlay');
 const titleEl = document.querySelector('.title')
 const popUpImageEl = document.querySelector("#popUpImage");
 
-    fetchCandyList().then(data => {
-        data.forEach(singleData => {
+    fetchCandyList().then(candy => {
+        candy.forEach(singleCandy => {
             let newData = document.createElement("div");
-            let addNewData = document.createElement("h2");
-            newData.classList.add("col");
-            someDataEl.appendChild(newData);
-            newData.appendChild(addNewData);
-            addNewData.innerText = `${singleData['name']}`
+            let candyName = document.createElement("h2");
+                newData.classList.add("col");
+                someDataEl.appendChild(newData);
+                newData.appendChild(candyName);
+                candyName.innerText = `${singleCandy['name']}`
     
-            let addImage = document.createElement("img");
-            newData.appendChild(addImage);
-            addImage.src = `https://bortakvall.se${singleData['images']['thumbnail']}`;
+            let candyImage = document.createElement("img");
+                newData.appendChild(candyImage);
+                candyImage.src = `https://bortakvall.se${singleCandy['images']['thumbnail']}`;
     
             let addPrice = document.createElement("h3");
-            newData.appendChild(addPrice)
-            addPrice.innerText = `${singleData['price']} KR`
+                newData.appendChild(addPrice)
+                addPrice.innerText = `${singleCandy['price']} KR`
 
             let addInfo = document.createElement("button");
-            addInfo.setAttribute("data-pop-target", "#pop")
-            newData.appendChild(addInfo)
-            addInfo.innerText = "INNEHÅLL"
+                addInfo.setAttribute("data-pop-target", "#pop")
+                newData.appendChild(addInfo)
+                addInfo.innerText = "INNEHÅLL"
 
-            let hideDescriptionTag = `${singleData['description']}`;
-            addInfo.addEventListener("click", () => {
+            let hideDescriptionTag = `${singleCandy['description']}`;
+                addInfo.addEventListener("click", () => {
                 const popWindow = document.querySelector(addInfo.dataset.popTarget)
-                popUpImageEl.src = `https://bortakvall.se${singleData['images']['large']}`;
+                popUpImageEl.src = `https://bortakvall.se${singleCandy['images']['large']}`;
                 descriptionDataEl.innerText = hideDescriptionTag.replace(tagRegExp, "");
-                titleEl.innerText = `${singleData['name']}`
+                titleEl.innerText = `${singleCandy['name']}`
                 openWindow(popWindow)
             });
         });

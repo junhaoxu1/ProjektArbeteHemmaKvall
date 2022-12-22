@@ -1,0 +1,62 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    list-style: none;
+    text-decoration: none;
+}
+
+.header {
+    z-index: 999;
+}
+
+
+.banner {
+    background-color: white;
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(98, 187, 255);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: black;
+    font-size: 50px;
+    text-align: center;
+}
+
+
+
+/* Sektion */
+
+section {
+    padding: 4rem 0 3rem;
+}
+
+/* Container för kassa */
+.container {
+    max-width: 80%;
+    width: 100%;
+    margin: auto;
+}
+
+/* Titel för kassa sektionen: Kassa */
+.section-title {
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.cart-content {
+
+}

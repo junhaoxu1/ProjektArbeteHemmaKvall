@@ -2,23 +2,20 @@ const productBoxEl = document.querySelector(".product-box");
 const shopContentEl = document.querySelector(".shop-content");
 const productImageEl = document.querySelector("#productImage");
 
+const cartBoxEl = document.querySelector(".cart-box")
 const productCart = document.querySelector(".bx-cart");
 const cart = document.querySelector(".cart");
 const closeCart = document.querySelector(".bx-x");
 
 const hideDescription = document.querySelector(".hide");
 
-
 const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
 const descriptionDataEl = document.querySelector(".descriptionData")
-let clicked = true;
 
 // Popup
 const titleEl = document.querySelector('.title')
 const popUpImageEl = document.querySelector("#popUpImage");
 const popOverlayEl = document.querySelector('#popOverlay');
-
-
 
 
 getProducts().then(data => {
@@ -49,6 +46,30 @@ getProducts().then(data => {
         let addBxCart = document.createElement("i"); // skapar i = symbol för kundvagn
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
+        
+        
+        addBxCart.addEventListener("click", () => {
+            let cartDetails = document.createElement("div");
+            cartDetails.classList.add("detail-box")
+            let productName = document.createElement("div");
+            productName.classList.add("cart-product-title");
+            let cartPrice = document.createElement("div");
+            cartPrice.classList.add("cart-price")
+            let cartImage = document.createElement("img")
+            cartImage.classList.add("addCartImage")
+
+            cartBoxEl.appendChild(cartImage); 
+            cartBoxEl.appendChild(productName);
+            cartBoxEl.appendChild(cartPrice);
+
+            cartImage.height = 100;
+            cartImage.width = 100;
+
+            cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
+            productName.innerText = `${singleData['name']}`
+            cartPrice.innerText = `${singleData['price']} SEK`
+
+        })
 
         // PopUp knapp
         let addInfoPopup = document.createElement("button");
@@ -68,6 +89,7 @@ getProducts().then(data => {
             titleEl.innerText = `${singleData['name']}`
             openWindow(popWindow)
         });
+
     });
 
 

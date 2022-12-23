@@ -50,20 +50,24 @@ getProducts().then(data => {
         
         addBxCart.addEventListener("click", () => {
             let cartDetails = document.createElement("div");
-            cartDetails.classList.add("detail-box")
-            let productName = document.createElement("div");
-            productName.classList.add("cart-product-title");
-            let cartPrice = document.createElement("div");
+            cartDetails.classList.add("detail-box");
+            cartDetails.classList.add("row");
+            let productDetails = document.createElement("ul");
+            productDetails.classList.add("productList")
+            let productName = document.createElement("li");
+            productName.classList.add("cart-title");
+            let cartPrice = document.createElement("li");
             cartPrice.classList.add("cart-price")
             let cartImage = document.createElement("img")
-            cartImage.classList.add("addCartImage")
+            cartImage.classList.add("col-sm-3")
+            cartImage.classList.add("cart-img")
 
-            cartBoxEl.appendChild(cartImage); 
-            cartBoxEl.appendChild(productName);
-            cartBoxEl.appendChild(cartPrice);
+            cartBoxEl.appendChild(cartDetails);
+            cartDetails.appendChild(cartImage); 
+            cartDetails.appendChild(productDetails);
 
-            cartImage.height = 100;
-            cartImage.width = 100;
+            productDetails.appendChild(productName)
+            productDetails.appendChild(cartPrice)
 
             cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
             productName.innerText = `${singleData['name']}`

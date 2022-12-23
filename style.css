@@ -55,7 +55,7 @@ h1 {
     text-decoration: none;
 }
 
-nav ul li {
+#menu li{
     display: inline-block;
     margin: 0 30px;
     font-size: 25;
@@ -102,7 +102,7 @@ a:hover {
     top: 0;
     /*right: -100%;*/ 
     right: 0;
-    width: 360px;
+    width: 450px;
     min-height: 100vh;
     padding: 20px;
     background-color: gainsboro;
@@ -120,11 +120,10 @@ a:hover {
 }
 
 .cart-box {
-    display: grid;
-    grid-template-columns: 32% 50% 18%;
-    align-items: center;
-    gap: 1rem;
     margin-top: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 500px;
 }
 
 .cart-img {
@@ -373,4 +372,3 @@ section {
       opacity: 1; 
       pointer-events: all;
     }
-  

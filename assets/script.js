@@ -8,9 +8,16 @@ const closeCart = document.querySelector(".bx-x");
 
 const hideDescription = document.querySelector(".hide");
 
+
 const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
-const descriptionDataEl = document.querySelector("#descriptionData")
+const descriptionDataEl = document.querySelector(".descriptionData")
 let clicked = true;
+
+// Popup
+const titleEl = document.querySelector('.title')
+const popUpImageEl = document.querySelector("#popUpImage");
+const popOverlayEl = document.querySelector('#popOverlay');
+
 
 
 
@@ -43,43 +50,49 @@ getProducts().then(data => {
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
 
+        // PopUp knapp
         let addInfoPopup = document.createElement("button");
-        addInfoPopup.classList.add("popup");
+        addInfoPopup.classList.add("popup-btn");
+        newData.appendChild(addInfoPopup);
+        addInfoPopup.setAttribute("data-pop-target", "#pop");
         newData.appendChild(addInfoPopup);
         addInfoPopup.innerText = "Läs mer"
 
 
-
-        addInfoPopup.addEventListener("click", function (e) {
-            if (clicked) {
-           
-                let hideDescriptionTag = `${singleData['description']}`;
-                newData.appendChild(descriptionDataEl);
-                descriptionDataEl.innerText = hideDescriptionTag.replace(tagRegExp, "")
-                descriptionDataEl.classList.remove("hide");
-                clicked = false;
-            } else {
-                descriptionDataEl.classList.add("hide");
-                clicked = true;
-            }
+        let hideDescriptionTag = `${singleData['description']}`;
+        addInfoPopup.addEventListener("click", () => {
+            const popWindow = document.querySelector(addInfoPopup.dataset.popTarget)
+            popUpImageEl.src = `https://bortakvall.se${singleData['images']['large']}`;
+            descriptionDataEl.innerText = hideDescriptionTag.replace(tagRegExp, "");
+            descriptionDataEl.innerText += `${singleData['price']} SEK`
+            titleEl.innerText = `${singleData['name']}`
+            openWindow(popWindow)
         });
-
-        
-        /*
-        let descriptionData = document.createElement("p");
-        let hideDescriptionTag = `${singleData['description']}`
-
-        newData.appendChild(descriptionData);
-        descriptionData.innerText = hideDescriptionTag.replace(tagRegExp, "") */
-
-
-    console.log(singleData['name']);
-
     });
+
+
+    const openWindow = popUp => {
+        if (popUp == null) return
+        popUp.classList.add('active')
+        popOverlayEl.classList.add('active')
+    }
+
+    const closeWindow = popUp => {
+        if (popUp == null) return
+        popUp.classList.remove('active')
+        popOverlayEl.classList.remove('active')
+    }
+
+    popOverlayEl.addEventListener('click', () => {
+        const windows = document.querySelectorAll('.pop.active')
+        windows.forEach(popUp => {
+            closeWindow(popUp)
+        })
+    })
 });
 
 
-// POPUP QUICK VIEW
+
 
 
 

@@ -50,17 +50,17 @@ getProducts().then(data => {
         
         addBxCart.addEventListener("click", () => {
             let cartDetails = document.createElement("div");
-            cartDetails.classList.add("detail-box");
-            cartDetails.classList.add("row");
+                cartDetails.classList.add("detail-box");
+                cartDetails.classList.add("row");
             let productDetails = document.createElement("ul");
-            productDetails.classList.add("productList")
+                productDetails.classList.add("productList")
             let productName = document.createElement("li");
-            productName.classList.add("cart-title");
+                productName.classList.add("cart-title");
             let cartPrice = document.createElement("li");
-            cartPrice.classList.add("cart-price")
+                cartPrice.classList.add("cart-price")
             let cartImage = document.createElement("img")
-            cartImage.classList.add("col-sm-3")
-            cartImage.classList.add("cart-img")
+                cartImage.classList.add("col-sm-3")
+                cartImage.classList.add("cart-img")
 
             cartBoxEl.appendChild(cartDetails);
             cartDetails.appendChild(cartImage); 

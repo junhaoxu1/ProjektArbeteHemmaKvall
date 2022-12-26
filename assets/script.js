@@ -10,12 +10,15 @@ const closeCart = document.querySelector(".bx-x");
 const hideDescription = document.querySelector(".hide");
 
 const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
-const descriptionDataEl = document.querySelector(".descriptionData")
+const descriptionDataEl = document.querySelector(".descriptionData");
 
 // Popup
 const titleEl = document.querySelector('.title')
 const popUpImageEl = document.querySelector("#popUpImage");
 const popOverlayEl = document.querySelector('#popOverlay');
+
+const totalPriceEl = document.querySelector(".total-price");
+const totalCostEl = document.getElementsByClassName("totalItemCost");
 
 getProducts().then(data => {
     data.forEach(singleData => {
@@ -81,7 +84,6 @@ getProducts().then(data => {
             decreaseQuantity.value = 1;
             decreaseQuantity.innerText = "-1";
         
-        
         addBxCart.addEventListener("click", () => {
 
             cartBoxEl.appendChild(cartDetails);
@@ -104,30 +106,32 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price']} SEK`
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-            
+            call();
 
         });
 
         removeCartItem.addEventListener("click", (e) => {
             cartDetails.remove();
+            call();
         }); 
 
         increaseQuantity.addEventListener("click", () => {
             currentAmountItems.value++;
             currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            call();
         })
 
         decreaseQuantity.addEventListener("click", () => {
             currentAmountItems.value--;
             currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            call();
 
             if(currentAmountItems.value === 0) {
                 cartDetails.remove();
             }
         })
-
 
         // PopUp knapp
         let addInfoPopup = document.createElement("button");
@@ -150,7 +154,6 @@ getProducts().then(data => {
 
     });
 
-
     const openWindow = popUp => {
         if (popUp == null) return
         popUp.classList.add('active')
@@ -171,12 +174,6 @@ getProducts().then(data => {
     })
 });
 
-
-
-
-
-
-
 // KUNGVAGN
 
 productCart.addEventListener("click", cartWithProducts);
@@ -195,5 +192,14 @@ function cartWithProducts() {
 
 };
 
+let sum = 0;
+let call = () => {
+    if (totalCostEl) {
+        for (let i = 0; i < totalCostEl.length; i++) {
+            sum += parseInt(totalCostEl[i].innerHTML)
+        }}
+        totalPriceEl.innerText = "Total: " + sum
+        sum = 0;
+}
 
 

@@ -147,13 +147,13 @@ a:hover {
     font-weight: 500;
 }
 
-.cart-quantity {
+/* .increase-quantity {
     border: 1px solid black;
     outline-color: black;
     width: 2.5rem;
     text-align: center;
     font-size: 1rem;
-}
+} */
 
 .cart-remove {
     font-size: 20px;

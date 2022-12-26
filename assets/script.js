@@ -17,7 +17,6 @@ const titleEl = document.querySelector('.title')
 const popUpImageEl = document.querySelector("#popUpImage");
 const popOverlayEl = document.querySelector('#popOverlay');
 
-
 getProducts().then(data => {
     data.forEach(singleData => {
         let newData = document.createElement("div"); //DIV skapas
@@ -46,34 +45,89 @@ getProducts().then(data => {
         let addBxCart = document.createElement("i"); // skapar i = symbol för kundvagn
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
+
+        let cartDetails = document.createElement("div");
+            cartDetails.classList.add("detail-box", "row");
+
+        let productDetails = document.createElement("ul");
+            productDetails.classList.add("productList");
+
+        let productName = document.createElement("li");
+            productName.classList.add("cart-title");
+
+        let cartPrice = document.createElement("li");
+            cartPrice.classList.add("cart-price");
+        
+        let cartImage = document.createElement("img");
+            cartImage.classList.add("col-sm-3", "cart-img");
+
+        let removeCartItem = document.createElement("i");
+            removeCartItem.classList.add("bx", "bxs-trash-alt", "cart-remove");
+
+        let currentAmountItems = document.createElement("li");
+            currentAmountItems.classList.add("currentAmount");
+            currentAmountItems.value = 0;
+
+        let totalItemPrice = document.createElement("li");
+            totalItemPrice.classList.add("totalItemCost");
+
+        let increaseQuantity = document.createElement("button");
+            increaseQuantity.classList.add("increase-quantity");
+            increaseQuantity.value = 1;
+            increaseQuantity.innerText = "+1";
+
+        let decreaseQuantity = document.createElement("button");
+            decreaseQuantity.classList.add("decrease-quantity");
+            decreaseQuantity.value = 1;
+            decreaseQuantity.innerText = "-1";
         
         
         addBxCart.addEventListener("click", () => {
-            let cartDetails = document.createElement("div");
-                cartDetails.classList.add("detail-box");
-                cartDetails.classList.add("row");
-            let productDetails = document.createElement("ul");
-                productDetails.classList.add("productList")
-            let productName = document.createElement("li");
-                productName.classList.add("cart-title");
-            let cartPrice = document.createElement("li");
-                cartPrice.classList.add("cart-price")
-            let cartImage = document.createElement("img")
-                cartImage.classList.add("col-sm-3")
-                cartImage.classList.add("cart-img")
 
             cartBoxEl.appendChild(cartDetails);
             cartDetails.appendChild(cartImage); 
             cartDetails.appendChild(productDetails);
 
-            productDetails.appendChild(productName)
-            productDetails.appendChild(cartPrice)
+            productDetails.appendChild(productName);
+            productDetails.appendChild(cartPrice);
+            productDetails.appendChild(increaseQuantity);
+            productDetails.appendChild(decreaseQuantity);
+            productDetails.appendChild(removeCartItem);
+            productDetails.appendChild(currentAmountItems);
+            productDetails.appendChild(totalItemPrice);
+
+            currentAmountItems.value++;
 
             cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
-            productName.innerText = `${singleData['name']}`
-            cartPrice.innerText = `${singleData['price']} SEK`
+            productName.innerText = `${singleData['name']}`;
+            cartPrice.innerText = `${singleData['price']} SEK`;
+            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
+            totalItemPrice.innerText = `${singleData['price']} SEK`
+            totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            
 
+        });
+
+        removeCartItem.addEventListener("click", (e) => {
+            cartDetails.remove();
+        }); 
+
+        increaseQuantity.addEventListener("click", () => {
+            currentAmountItems.value++;
+            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
+            totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
         })
+
+        decreaseQuantity.addEventListener("click", () => {
+            currentAmountItems.value--;
+            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
+            totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+
+            if(currentAmountItems.value === 0) {
+                cartDetails.remove();
+            }
+        })
+
 
         // PopUp knapp
         let addInfoPopup = document.createElement("button");

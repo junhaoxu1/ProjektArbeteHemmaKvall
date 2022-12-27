@@ -55,7 +55,7 @@ h1 {
     text-decoration: none;
 }
 
-nav ul li {
+#menu li{
     display: inline-block;
     margin: 0 30px;
     font-size: 25;
@@ -102,7 +102,7 @@ a:hover {
     top: 0;
     /*right: -100%;*/ 
     right: 0;
-    width: 360px;
+    width: 450px;
     min-height: 100vh;
     padding: 20px;
     background-color: gainsboro;
@@ -120,11 +120,10 @@ a:hover {
 }
 
 .cart-box {
-    display: grid;
-    grid-template-columns: 32% 50% 18%;
-    align-items: center;
-    gap: 1rem;
     margin-top: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 750px;
 }
 
 .cart-img {
@@ -148,13 +147,13 @@ a:hover {
     font-weight: 500;
 }
 
-.cart-quantity {
+/* .increase-quantity {
     border: 1px solid black;
     outline-color: black;
     width: 2.5rem;
     text-align: center;
     font-size: 1rem;
-}
+} */
 
 .cart-remove {
     font-size: 20px;
@@ -306,12 +305,6 @@ section {
 
 }
 
-/*
-#descriptionData {
-    font-size: 13px;
-    padding: 5px;
-} */
-
 .pop {
     position: fixed;
     top: 50%;
@@ -379,4 +372,3 @@ section {
       opacity: 1; 
       pointer-events: all;
     }
-  

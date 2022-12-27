@@ -198,7 +198,7 @@ let call = () => {
         for (let i = 0; i < totalCostEl.length; i++) {
             sum += parseInt(totalCostEl[i].innerHTML)
         }}
-        totalPriceEl.innerText = "Total: " + sum
+        totalPriceEl.innerText = "Total Summa: " + sum
         sum = 0;
 }
 

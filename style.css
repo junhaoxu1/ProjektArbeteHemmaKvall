@@ -1,7 +1,7 @@
 .col {
     flex-basis: 25%;
-    width: 400px;
-    max-width: 400px;
+    width: 300px;
+    max-width: 300px;
     border: 0.1px solid black;
     margin: 5px 0 0 5px;
 }

@@ -82,7 +82,7 @@ const totalCostEl = document.getElementsByClassName("totalItemCost");
 
 getProducts().then(data => {
     data.forEach(singleData => {
-        let newData = document.createElement("div"); //DIV skapas
+        let newData = document.createElement("div"); //Skapar DIV
         newData.classList.add("product-box"); // lägger till klassen product-box
 
         let addNewData = document.createElement("h2"); // skapa h2

@@ -49,6 +49,8 @@ getProducts().then(data => {
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
 
+        
+        
         let cartDetails = document.createElement("div");
             cartDetails.classList.add("detail-box", "row");
 
@@ -103,7 +105,7 @@ getProducts().then(data => {
             cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
             productName.innerText = `${singleData['name']}`;
             cartPrice.innerText = `${singleData['price']} SEK`;
-            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
+            currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price']} SEK`
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             call();

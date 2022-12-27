@@ -7,7 +7,7 @@ const fetchCandyList = async () => {
 };
 const getProducts = async () => {
     const response = await fetch('https://www.bortakvall.se/api/products');
-    if (!res.ok) {
+    if (!response.ok) {
         throw new Error(`${res.status} ${res.statusText}`);
     }
     const data = await response.json();

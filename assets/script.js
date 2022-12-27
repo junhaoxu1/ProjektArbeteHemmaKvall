@@ -112,6 +112,7 @@ getProducts().then(data => {
 
         removeCartItem.addEventListener("click", (e) => {
             cartDetails.remove();
+            currentAmountItems.value = 0;
             call();
         }); 
 

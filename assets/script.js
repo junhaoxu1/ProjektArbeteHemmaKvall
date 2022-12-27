@@ -2,23 +2,24 @@ const productBoxEl = document.querySelector(".product-box");
 const shopContentEl = document.querySelector(".shop-content");
 const productImageEl = document.querySelector("#productImage");
 
-const cartBoxEl = document.querySelector(".cart-box")
 const productCart = document.querySelector(".bx-cart");
 const cart = document.querySelector(".cart");
 const closeCart = document.querySelector(".bx-x");
 
 const hideDescription = document.querySelector(".hide");
 
+
 const tagRegExp = new RegExp('<\s*[^>]*>', 'g');
-const descriptionDataEl = document.querySelector(".descriptionData");
+const descriptionDataEl = document.querySelector(".descriptionData")
+let clicked = true;
 
 // Popup
 const titleEl = document.querySelector('.title')
 const popUpImageEl = document.querySelector("#popUpImage");
 const popOverlayEl = document.querySelector('#popOverlay');
 
-const totalPriceEl = document.querySelector(".total-price");
-const totalCostEl = document.getElementsByClassName("totalItemCost");
+
+
 
 getProducts().then(data => {
     data.forEach(singleData => {
@@ -49,90 +50,6 @@ getProducts().then(data => {
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
 
-        let cartDetails = document.createElement("div");
-            cartDetails.classList.add("detail-box", "row");
-
-        let productDetails = document.createElement("ul");
-            productDetails.classList.add("productList");
-
-        let productName = document.createElement("li");
-            productName.classList.add("cart-title");
-
-        let cartPrice = document.createElement("li");
-            cartPrice.classList.add("cart-price");
-        
-        let cartImage = document.createElement("img");
-            cartImage.classList.add("col-sm-3", "cart-img");
-
-        let removeCartItem = document.createElement("i");
-            removeCartItem.classList.add("bx", "bxs-trash-alt", "cart-remove");
-
-        let currentAmountItems = document.createElement("li");
-            currentAmountItems.classList.add("currentAmount");
-            currentAmountItems.value = 0;
-
-        let totalItemPrice = document.createElement("li");
-            totalItemPrice.classList.add("totalItemCost");
-
-        let increaseQuantity = document.createElement("button");
-            increaseQuantity.classList.add("increase-quantity");
-            increaseQuantity.value = 1;
-            increaseQuantity.innerText = "+1";
-
-        let decreaseQuantity = document.createElement("button");
-            decreaseQuantity.classList.add("decrease-quantity");
-            decreaseQuantity.value = 1;
-            decreaseQuantity.innerText = "-1";
-        
-        addBxCart.addEventListener("click", () => {
-
-            cartBoxEl.appendChild(cartDetails);
-            cartDetails.appendChild(cartImage); 
-            cartDetails.appendChild(productDetails);
-
-            productDetails.appendChild(productName);
-            productDetails.appendChild(cartPrice);
-            productDetails.appendChild(increaseQuantity);
-            productDetails.appendChild(decreaseQuantity);
-            productDetails.appendChild(removeCartItem);
-            productDetails.appendChild(currentAmountItems);
-            productDetails.appendChild(totalItemPrice);
-
-            currentAmountItems.value++;
-
-            cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
-            productName.innerText = `${singleData['name']}`;
-            cartPrice.innerText = `${singleData['price']} SEK`;
-            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
-            totalItemPrice.innerText = `${singleData['price']} SEK`
-            totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-            call();
-
-        });
-
-        removeCartItem.addEventListener("click", (e) => {
-            cartDetails.remove();
-            call();
-        }); 
-
-        increaseQuantity.addEventListener("click", () => {
-            currentAmountItems.value++;
-            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
-            totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-            call();
-        })
-
-        decreaseQuantity.addEventListener("click", () => {
-            currentAmountItems.value--;
-            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
-            totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-            call();
-
-            if(currentAmountItems.value === 0) {
-                cartDetails.remove();
-            }
-        })
-
         // PopUp knapp
         let addInfoPopup = document.createElement("button");
         addInfoPopup.classList.add("popup-btn");
@@ -151,8 +68,8 @@ getProducts().then(data => {
             titleEl.innerText = `${singleData['name']}`
             openWindow(popWindow)
         });
-
     });
+
 
     const openWindow = popUp => {
         if (popUp == null) return
@@ -174,6 +91,12 @@ getProducts().then(data => {
     })
 });
 
+
+
+
+
+
+
 // KUNGVAGN
 
 productCart.addEventListener("click", cartWithProducts);
@@ -192,14 +115,5 @@ function cartWithProducts() {
 
 };
 
-let sum = 0;
-let call = () => {
-    if (totalCostEl) {
-        for (let i = 0; i < totalCostEl.length; i++) {
-            sum += parseInt(totalCostEl[i].innerHTML)
-        }}
-        totalPriceEl.innerText = "Total: " + sum
-        sum = 0;
-}
 
 

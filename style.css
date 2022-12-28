@@ -212,9 +212,11 @@ a:hover {
     padding: 10px;
 }
 
+
 .detail-box {
     display: grid;
-    row-gap: 0.5rem;
+    row-gap: 2rem;
+    width: 100%;
 }
 
 .cart-product-title {
@@ -247,6 +249,7 @@ a:hover {
 }
 
 .increase-quantity {
+   
     border: 1px solid black;
     outline-color: black;
     width: 2.5rem;
@@ -256,6 +259,7 @@ a:hover {
 }
 
 .decrease-quantity {
+   
     border: 1px solid black;
     outline-color: black;
     width: 2.5rem;

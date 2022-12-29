@@ -539,6 +539,8 @@ section {
 }
   
 #popUpImage {
+    display: flex;
+    justify-content: center;
     width: 70%;
     align-items: center;
 }

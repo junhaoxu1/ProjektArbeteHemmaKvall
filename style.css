@@ -1,3 +1,74 @@
+.col {
+    flex-basis: 25%;
+    width: 300px;
+    max-width: 300px;
+    border: 0.1px solid black;
+    margin: 5px 0 0 5px;
+}
+
+.pop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 750px;
+    max-width: 80%;
+}
+
+.pop.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popHeader {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.popHeader .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.popHeader .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.descriptionData {
+    padding: 10px 15px;
+}
+
+  
+#popOverlay {
+    position: fixed;
+    opacity: 0; 
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+  
+#popOverlay.active {
+    opacity: 1; 
+    pointer-events: all;
+}
+
+
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
@@ -33,6 +104,11 @@ h1 {
     color: black;
     font-size: 50px;
     text-align: center;
+    max-width: 100%;
+}
+
+h3 {
+    font-size: 15px;
 }
 
 
@@ -48,7 +124,7 @@ h1 {
     /*box-shadow: 0px 0.1px 1px 1px; */
 }
 
-.main-nav ul{
+.main-nav .meny{
     flex: 1;
     text-align: center;
     color: black;  
@@ -64,12 +140,13 @@ h1 {
 }
 
 a {
-    text-decoration: none;
+   
     padding: 15px;
 }
 
 a:link {
     color: black;
+    text-decoration: none;
 }
 
 a:visited {
@@ -103,39 +180,79 @@ a:hover {
     /*right: -100%;*/ 
     right: 0;
     width: 450px;
-    min-height: 100vh;
+    max-width: 100%;
+    min-height: 100%;
     padding: 20px;
     background-color: gainsboro;
     z-index: 100;
     transition: 0.5s;
 }
 
+.cart-content {
+    height: 500px;
+}
+
+@media screen and (max-width: 375px) {
+    .cart-content{
+        height: 350px;
+    }
+
+    .decrease-quantity {
+        margin: 0 70px 0 10px;
+    }
+
+}
+
 .hide {
     display: none;
 }
 
-.cart-title {
+ul {
+    flex: 1;
+    color: black;  
+    text-decoration: none;
+}
+
+.cart-maintitle {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    padding: 20px;
+}
+
+.cart-title {
+    text-align: left;
+    font-size: 1rem;
 }
 
 .cart-box {
     margin-top: 1rem;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 750px;
+    height: 100%;
 }
 
+
 .cart-img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     padding: 10px;
 }
 
+
 .detail-box {
     display: grid;
-    row-gap: 0.5rem;
+    row-gap: 2rem;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.productList{
+    padding: 15px;
 }
 
 .cart-product-title {
@@ -145,6 +262,11 @@ a:hover {
 
 .cart-price {
     font-weight: 500;
+    text-align: left;
+}
+
+.currentAmount {
+    text-align: left;
 }
 
 /* .increase-quantity {
@@ -155,10 +277,42 @@ a:hover {
     font-size: 1rem;
 } */
 
+/* Test för box quantity */
+.bx-quantity {
+    display: flex;
+    justify-content: left;
+    text-align: center;
+}
+
+
+.increase-quantity {
+    border: 0px solid black;
+    outline-color: black;
+    width: 2rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+
+.decrease-quantity {
+    border: 0px solid black;
+    outline-color: black;
+    width: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 120px 0 10px;
+}
+
+.totalItemCost {
+    text-align: left;
+}
+
+
 .cart-remove {
     font-size: 20px;
     color: black;
     cursor: pointer;
+  
 }
 
 .total {
@@ -216,16 +370,49 @@ section {
 
 /* Container för produkter */
 .container {
-    max-width: 80%;
+    max-width: 90%;
     width: 100%;
     margin: auto;
 }
 
-/* Titel för produkt sektionen: Shop */
+/* Titel för produkt sektionen: Lösgodis */
 .section-title {
     text-align: center;
-    padding-bottom: 5%;
+    padding-bottom: 4%;
 }
+
+/* Sortering alternativ */
+.sort-product-div {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+#sort {
+    border: 1px solid gainsboro;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* I produkt översikt 133 produkter visas*/
+.antal-produkter {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* I produktöversikt 133 produkter visas varav 42 är i lager*/
+.antal-produkter-in-storage {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.productshows {
+    border: 1px solid gainsboro;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
 
 .productImage {
     width: 100%;
@@ -317,39 +504,39 @@ section {
     background-color: white;
     width: 750px;
     max-width: 80%;
-  }
+}
   
-  .pop.active {
+.pop.active {
     transform: translate(-50%, -50%) scale(1);
-  }
+}
   
-  .popHeader {
+.popHeader {
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid gainsboro;
-  }
+}
   
-  .popHeader .title {
+.popHeader .title {
     font-size: 1.25rem;
     font-weight: bold;
     text-align: center;
-  }
+}
   
-  .popHeader .close-button {
+.popHeader .close-button {
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
     font-size: 1.25rem;
     font-weight: bold;
-  }
+}
   
-  .descriptionData {
+.descriptionData {
     font-size: 13px;
     padding: 10px;
-  }
+}
   
 #popUpImage {
     width: 70%;
@@ -368,7 +555,8 @@ section {
     pointer-events: none;
 }
     
-    #popOverlay.active {
+
+#popOverlay.active {
       opacity: 1; 
       pointer-events: all;
-    }
+}

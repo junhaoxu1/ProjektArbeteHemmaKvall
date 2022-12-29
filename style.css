@@ -196,6 +196,11 @@ a:hover {
     .cart-content{
         height: 350px;
     }
+
+    .decrease-quantity {
+        margin: 0 70px 0 10px;
+    }
+
 }
 
 .hide {

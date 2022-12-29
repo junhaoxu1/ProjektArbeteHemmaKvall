@@ -79,12 +79,12 @@ getProducts().then(data => {
         let increaseQuantity = document.createElement("button");
             increaseQuantity.classList.add("increase-quantity");
             increaseQuantity.value = 1;
-            increaseQuantity.innerText = "+1";
+            increaseQuantity.innerText = "+";
 
         let decreaseQuantity = document.createElement("button");
             decreaseQuantity.classList.add("decrease-quantity");
             decreaseQuantity.value = 1;
-            decreaseQuantity.innerText = "-1";
+            decreaseQuantity.innerText = "-";
         
         addBxCart.addEventListener("click", () => {
 
@@ -120,14 +120,14 @@ getProducts().then(data => {
 
         increaseQuantity.addEventListener("click", () => {
             currentAmountItems.value++;
-            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
+            currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             call();
         })
 
         decreaseQuantity.addEventListener("click", () => {
             currentAmountItems.value--;
-            currentAmountItems.innerText = "Quantity: " + currentAmountItems.value;
+            currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             call();
 
@@ -200,7 +200,7 @@ let call = () => {
         for (let i = 0; i < totalCostEl.length; i++) {
             sum += parseInt(totalCostEl[i].innerHTML)
         }}
-        totalPriceEl.innerText = "Total Summa: " + sum
+        totalPriceEl.innerText = "Total: " + sum + " SEK"
         sum = 0;
 }
 

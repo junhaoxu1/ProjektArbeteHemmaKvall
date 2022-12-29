@@ -28,6 +28,19 @@ getProducts().then(data => {
         let addNewData = document.createElement("h2"); // skapa h2
         addNewData.classList.add("product-title"); // lägger till klassen product-title
 
+        // Visar antal i lager
+        let stockQuantity = 0;
+        let totalQuantity = data.length;
+
+        data.forEach(singleData => {
+            if (singleData['stock_status'] == 'instock') {
+                stockQuantity++;
+            }
+        });
+
+        let stockCountEl = document.querySelector('#stockCount');
+        stockCountEl.innerText = `Visar ${totalQuantity} produkter varav ${stockQuantity} är i lager`
+
 
         let addImage = document.createElement("img"); // skapar img 
         addImage.classList.add("productImage"); // lägger till img klass productImage

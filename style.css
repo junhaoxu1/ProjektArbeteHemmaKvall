@@ -106,6 +106,10 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    font-size: 15px;
+}
+
 
 .main-nav {
     display: flex;
@@ -119,7 +123,7 @@ h1 {
     /*box-shadow: 0px 0.1px 1px 1px; */
 }
 
-.main-nav ul{
+.main-nav .meny{
     flex: 1;
     text-align: center;
     color: black;  
@@ -182,8 +186,18 @@ a:hover {
     transition: 0.5s;
 }
 
+.cart-content {
+    height: 500px;
+}
+
 .hide {
     display: none;
+}
+
+ul {
+    flex: 1;
+    color: black;  
+    text-decoration: none;
 }
 
 .cart-maintitle {
@@ -194,7 +208,7 @@ a:hover {
 
 .cart-title {
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .cart-box {
@@ -206,8 +220,8 @@ a:hover {
 
 
 .cart-img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     padding: 10px;
 }
@@ -217,6 +231,15 @@ a:hover {
     display: grid;
     row-gap: 2rem;
     width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.productList{
+    padding: 15px;
 }
 
 .cart-product-title {
@@ -248,24 +271,26 @@ a:hover {
     text-align: center;
 }
 
+
 .increase-quantity {
-   
-    border: 1px solid black;
+  
+    border: 0px solid black;
     outline-color: black;
-    width: 2.5rem;
+    width: 2rem;
     text-align: center;
-    justify-content: left;
     font-size: 1rem;
+    
 }
+
 
 .decrease-quantity {
    
-    border: 1px solid black;
+    border: 0px solid black;
     outline-color: black;
-    width: 2.5rem;
-    justify-content: left;
+    width: 2rem;
     text-align: center;
     font-size: 1rem;
+    margin: 0 120px 0 10px;
 }
 
 .totalItemCost {
@@ -335,16 +360,49 @@ section {
 
 /* Container för produkter */
 .container {
-    max-width: 80%;
+    max-width: 90%;
     width: 100%;
     margin: auto;
 }
 
-/* Titel för produkt sektionen: Shop */
+/* Titel för produkt sektionen: Lösgodis */
 .section-title {
     text-align: center;
-    padding-bottom: 5%;
+    padding-bottom: 4%;
 }
+
+/* Sortering alternativ */
+.sort-product-div {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+#sort {
+    border: 1px solid gainsboro;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* I produkt översikt 133 produkter visas*/
+.antal-produkter {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* I produktöversikt 133 produkter visas varav 42 är i lager*/
+.antal-produkter-in-storage {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.productshows {
+    border: 1px solid gainsboro;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
 
 .productImage {
     width: 100%;

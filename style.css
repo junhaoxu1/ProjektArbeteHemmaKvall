@@ -179,7 +179,8 @@ a:hover {
     /*right: -100%;*/ 
     right: 0;
     width: 450px;
-    min-height: 100vh;
+    max-width: 100%;
+    min-height: 100%;
     padding: 20px;
     background-color: gainsboro;
     z-index: 100;
@@ -273,18 +274,15 @@ ul {
 
 
 .increase-quantity {
-  
     border: 0px solid black;
     outline-color: black;
     width: 2rem;
     text-align: center;
     font-size: 1rem;
-    
 }
 
 
 .decrease-quantity {
-   
     border: 0px solid black;
     outline-color: black;
     width: 2rem;

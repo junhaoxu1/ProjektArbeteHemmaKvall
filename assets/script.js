@@ -6,6 +6,7 @@ const cartBoxEl = document.querySelector(".cart-box")
 const productCart = document.querySelector(".bx-cart");
 const cart = document.querySelector(".cart");
 const closeCart = document.querySelector(".bx-x");
+const checkOutButtonEl = document.querySelector('#checkOutButton')
 
 const hideDescription = document.querySelector(".hide");
 
@@ -19,8 +20,6 @@ const popOverlayEl = document.querySelector('#popOverlay');
 
 const totalPriceEl = document.querySelector(".total-price");
 const totalCostEl = document.getElementsByClassName("totalItemCost");
-
-let products = [];
 
 getProducts().then(data => {
     data.forEach(singleData => {
@@ -113,7 +112,6 @@ getProducts().then(data => {
             call();
 
             addLocalProduct();
-
         });
 
         removeCartItem.addEventListener("click", (e) => {
@@ -128,7 +126,6 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             call();
-            addLocalProduct();
         })
 
         decreaseQuantity.addEventListener("click", () => {
@@ -160,25 +157,62 @@ getProducts().then(data => {
             titleEl.innerText = `${singleData['name']}`
             openWindow(popWindow)
         });
-        function addLocalProduct() {
-            let id = singleData['id'];
-            if(localStorage.getItem('data')) {
-                products = JSON.parse(localStorage.getItem('data'));
-            }
-            if(products.includes(data => data.id !== id )) {
-                singleData['price'] * currentAmountItems.value;
-                console.log("Nothing Happened")
-                console.log(products)
-                console.log(products[data[singleData.name]])
-            } else { 
-                    products.push({'id' : singleData['id'], 'name' : singleData['name'], 'price' : singleData['price'], 'thumbnail' : singleData['images']['thumbnail'],
-                            'quantity' : currentAmountItems.value})
-                console.log("Pushing")
-                console.log(products)
-                // console.log(products[data[singleData.name]])
-            }
-            localStorage.setItem('data', JSON.stringify(products))
+
+        checkOutButtonEl.addEventListener('click', () => {
+            
+        })
+
+        function getLocal() {
+            let products = JSON.parse(localStorage.getItem('data')) || [];
+            return products;
         }
+
+        function setLocal(localData) {
+            localStorage.setItem('data', JSON.stringify(localData))
+        }
+
+        function addLocalProduct() {
+            let isProductInCart = false;
+            const products = getLocal();
+
+            products.forEach(function(product) {
+                if(product.id === singleData['id']) {
+                    let index = products.findIndex((n => n.id == product.id))
+                    products[index].quantity = currentAmountItems.value;
+                    products[index].price = singleData['price'] * products[index].quantity;
+                    console.log(index)
+                    console.log(products);
+                    setLocal(products);
+                    isProductInCart = true;
+                };  
+            });
+            if(!isProductInCart) {
+                console.log("push");
+                console.log(products);
+
+
+                products.push({
+                    'id' : singleData['id'], 
+                    'name' : singleData['name'], 
+                    'price' : singleData['price'] * currentAmountItems.value, 
+                    'thumbnail' : singleData['images']['thumbnail'],
+                    'quantity' : currentAmountItems.value
+                })
+                setLocal(products);
+            }
+            
+            // { 
+            //         products[singleData['name']] = ({'id' : singleData['id'], 'name' : singleData['name'], 'price' : singleData['price'], 'thumbnail' : singleData['images']['thumbnail'],
+            //                 'quantity' : currentAmountItems.value})
+            //     localStorage.setItem('data', JSON.stringify(products))
+            //     console.log("Pushing")
+            //     console.log(products)
+            //     console.log(products[singleData['name']])
+            // }
+
+            // localStorage.setItem('data', JSON.stringify(products))
+        }
+
         function removeLocalProduct() {
         let id = singleData['id'];
         let storageProducts = JSON.parse(localStorage.getItem('data'));

@@ -125,6 +125,7 @@ getProducts().then(data => {
             currentAmountItems.value++;
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            addLocalProduct()
             call();
         })
 
@@ -132,6 +133,7 @@ getProducts().then(data => {
             currentAmountItems.value--;
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            addLocalProduct()
             call();
 
             if(currentAmountItems.value === 0) {

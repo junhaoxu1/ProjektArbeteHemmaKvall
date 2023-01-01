@@ -182,17 +182,14 @@ getProducts().then(data => {
                     let index = products.findIndex((n => n.id == product.id))
                     products[index].quantity = currentAmountItems.value;
                     products[index].price = singleData['price'] * products[index].quantity;
-                    console.log(index)
-                    console.log(products);
                     setLocal(products);
                     isProductInCart = true;
+                    if (product.quantity === 0) {
+                        removeLocalProduct();
+                    }
                 };  
             });
             if(!isProductInCart) {
-                console.log("push");
-                console.log(products);
-
-
                 products.push({
                     'id' : singleData['id'], 
                     'name' : singleData['name'], 
@@ -202,17 +199,6 @@ getProducts().then(data => {
                 })
                 setLocal(products);
             }
-            
-            // { 
-            //         products[singleData['name']] = ({'id' : singleData['id'], 'name' : singleData['name'], 'price' : singleData['price'], 'thumbnail' : singleData['images']['thumbnail'],
-            //                 'quantity' : currentAmountItems.value})
-            //     localStorage.setItem('data', JSON.stringify(products))
-            //     console.log("Pushing")
-            //     console.log(products)
-            //     console.log(products[singleData['name']])
-            // }
-
-            // localStorage.setItem('data', JSON.stringify(products))
         }
 
         function removeLocalProduct() {
@@ -266,15 +252,11 @@ let call = () => {
         for (let i = 0; i < totalCostEl.length; i++) {
             sum += parseInt(totalCostEl[i].innerHTML)
         }}
-        totalPriceEl.innerText = "Total: " + sum + " SEK"
+        totalPriceEl.innerText = "Total Summa: " + sum + " SEK"
         sum = 0;
 }
 
-
-
-
 // Sortera produktnamn
-
 const sortProducts = (sortAlternative) => {
     // hämtar produkter från API
     getProducts().then(data => {
@@ -294,152 +276,6 @@ const sortProducts = (sortAlternative) => {
         default:
             break;
     }
-
-    // Iterera över alla produkter i produktöversikt
-        data.forEach(singleData => {
-            let newData = document.createElement("div"); // DIV skapas
-            newData.classList.add("product-box"); // lägger till klassen product-box
-    
-            let addNewData = document.createElement("h2"); // skapa h2
-            addNewData.classList.add("product-title"); // lägger till klassen product-title
-    
-    
-            let addImage = document.createElement("img"); // skapar img 
-            addImage.classList.add("productImage"); // lägger till img klass productImage
-    
-            newData.appendChild(addImage); // i DIV lägg till barnet img
-            addImage.src = `https://bortakvall.se${singleData['images']['thumbnail']}`; // själva bilden från API
-    
-            let addPrice = document.createElement("span"); // skapar span
-            addPrice.classList.add("price"); // lägger till klassen price i span
-    
-            shopContentEl.appendChild(newData); // content för producter, lägger till DIV =newData
-            newData.appendChild(addNewData); // DIV + barnet h2
-            addNewData.innerText = `${singleData['name']}`; // h2 innertext är produktnamn från API
-    
-    
-            newData.appendChild(addPrice); // DiV + span med pris
-            addPrice.innerText = `${singleData['price']} SEK` // span visar priset på produkt
-    
-            let addBxCart = document.createElement("i"); // skapar i = symbol för kundvagn
-            addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
-            newData.appendChild(addBxCart); // DIV + i med klasser
-    
-            
-    
-            // Varukorg
-    
-            let cartDetails = document.createElement("div"); // skapar div för produktdetaljer i varukorg
-                cartDetails.classList.add("detail-box", "row"); // lägger till klassen detail-box & row
-    
-            let productDetails = document.createElement("ul"); 
-                productDetails.classList.add("productList");
-    
-            let productName = document.createElement("li");
-                productName.classList.add("cart-title");
-    
-            let cartPrice = document.createElement("li");
-                cartPrice.classList.add("cart-price");
-            
-            let cartImage = document.createElement("img");
-                cartImage.classList.add("col-sm-3", "cart-img");
-    
-            let removeCartItem = document.createElement("i");
-                removeCartItem.classList.add("bx", "bxs-trash-alt", "cart-remove");
-    
-            let currentAmountItems = document.createElement("li");
-                currentAmountItems.classList.add("currentAmount");
-                currentAmountItems.value = 0;
-    
-            let totalItemPrice = document.createElement("li");
-                totalItemPrice.classList.add("totalItemCost");
-    
-            let increaseQuantity = document.createElement("button");
-                increaseQuantity.classList.add("increase-quantity");
-                increaseQuantity.value = 1;
-                increaseQuantity.innerText = "+";
-    
-            let decreaseQuantity = document.createElement("button");
-                decreaseQuantity.classList.add("decrease-quantity");
-                decreaseQuantity.value = 1;
-                decreaseQuantity.innerText = "-";
-            
-            
-            addBxCart.addEventListener("click", () => {
-    
-                cartBoxEl.appendChild(cartDetails);
-                cartDetails.appendChild(cartImage); 
-                cartDetails.appendChild(productDetails);
-    
-                productDetails.appendChild(productName);
-                productDetails.appendChild(cartPrice);
-                productDetails.appendChild(increaseQuantity);
-                productDetails.appendChild(decreaseQuantity);
-                productDetails.appendChild(removeCartItem);
-                productDetails.appendChild(currentAmountItems);
-                productDetails.appendChild(totalItemPrice);
-    
-                currentAmountItems.value++;
-    
-                cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
-                productName.innerText = `${singleData['name']}`;
-                cartPrice.innerText = `${singleData['price']} SEK`;
-                currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
-                totalItemPrice.innerText = `${singleData['price']} SEK`
-                totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-                call();
-    
-            });
-    
-            // Tar bort produkt från varukorg
-            removeCartItem.addEventListener("click", (e) => {
-                cartDetails.remove();
-                currentAmountItems.value = 0;
-                call();
-            }); 
-    
-            // Ökar antal produkter
-            increaseQuantity.addEventListener("click", () => {
-                currentAmountItems.value++;
-                currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
-                totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-                call();
-            })
-    
-            // Minskar antal produkter
-            decreaseQuantity.addEventListener("click", () => {
-                currentAmountItems.value--;
-                currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
-                totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-                call();
-    
-                if(currentAmountItems.value === 0) {
-                    cartDetails.remove();
-                }
-            })
-    
-    
-            // PopUp knapp: Läs mer
-            let addInfoPopup = document.createElement("button");
-            addInfoPopup.classList.add("popup-btn");
-            newData.appendChild(addInfoPopup);
-            addInfoPopup.setAttribute("data-pop-target", "#pop");
-            newData.appendChild(addInfoPopup);
-            addInfoPopup.innerText = "Läs mer"
-    
-            
-            let hideDescriptionTag = `${singleData['description']}`;
-            addInfoPopup.addEventListener("click", () => {
-                const popWindow = document.querySelector(addInfoPopup.dataset.popTarget)
-                popUpImageEl.src = `https://bortakvall.se${singleData['images']['large']}`;
-                descriptionDataEl.innerText = hideDescriptionTag.replace(tagRegExp, "");
-                descriptionDataEl.innerText += `${singleData['price']} SEK`
-                titleEl.innerText = `${singleData['name']}`
-                openWindow(popWindow)
-            });
-
-            shopContentEl.appendChild(newData);
-        });
     });
 }
 

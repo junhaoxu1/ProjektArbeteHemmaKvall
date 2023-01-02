@@ -97,7 +97,7 @@ function displayCart() {
         }
       })
       .then(data => {
-        alert(`Din order funkade! Ditt ordernummer är: ${data.orderNumber}.`);
+        alert(`Tack för din order! Ditt ordernummer är: ${data.orderNumber}.`);
     
         localStorage.removeItem('cart');
         form.reset();

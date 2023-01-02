@@ -50,6 +50,7 @@ getProducts().then(data => {
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
 
+        let inStock = singleData['stock_status'];
         let stockQuantity = singleData['stock_quantity'];
         
         let cartDetails = document.createElement("div");
@@ -86,6 +87,10 @@ getProducts().then(data => {
             decreaseQuantity.classList.add("decrease-quantity");
             decreaseQuantity.value = 1;
             decreaseQuantity.innerText = "-";
+
+        if(inStock == 'outofstock') {
+            addBxCart.setAttribute('disabled', 'disabled');
+        }
         
         addBxCart.addEventListener("click", () => {
 
@@ -109,8 +114,6 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price']} SEK`
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-
-            console.log(stockQuantity);
             
                 if(stockQuantity == 0) {
                     addBxCart.setAttribute('disabled', 'disabled');
@@ -119,7 +122,6 @@ getProducts().then(data => {
                 }
 
             call();
-
             addLocalProduct();
         });
 
@@ -139,6 +141,7 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             stockQuantity--;
+            console.log(stockQuantity);
 
             if(stockQuantity == 0) {
                 addBxCart.setAttribute('disabled', 'disabled');

@@ -56,9 +56,7 @@ let removeCartItem = document.createElement("i");
             } else {
                totalPriceEl.innerText = "Din varukorg Är Tom";
             }
-
     }
-
 
     containerEl.appendChild(checkOutColumn);
     checkOutColumn.appendChild(checkOutRow);

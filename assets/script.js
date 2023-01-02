@@ -46,11 +46,11 @@ getProducts().then(data => {
         newData.appendChild(addPrice); // DiV + span med pris
         addPrice.innerText = `${singleData['price']} SEK` // span visar priset på produkt
 
-        let addBxCart = document.createElement("i"); // skapar i = symbol för kundvagn
+        let addBxCart = document.createElement("button"); // skapar i = symbol för kundvagn
         addBxCart.classList.add("bx", "bx-cart", "add-cart"); // lägger till 3 klasser i i (styling i css)
         newData.appendChild(addBxCart); // DIV + i med klasser
 
-        
+        let stockQuantity = singleData['stock_quantity'];
         
         let cartDetails = document.createElement("div");
             cartDetails.classList.add("detail-box", "row");
@@ -102,13 +102,22 @@ getProducts().then(data => {
             productDetails.appendChild(totalItemPrice);
 
             currentAmountItems.value++;
+            stockQuantity--;
 
             cartImage.src = `https://bortakvall.se${singleData['images']['large']}`;
             productName.innerText = `${singleData['name']}`;
-            cartPrice.innerText = `${singleData['price']} SEK`;
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price']} SEK`
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+
+            console.log(stockQuantity);
+            
+                if(stockQuantity == 0) {
+                    addBxCart.setAttribute('disabled', 'disabled');
+                    increaseQuantity.setAttribute('disabled', 'disabled');
+                    alert("Out of stock!")
+                }
+
             call();
 
             addLocalProduct();
@@ -117,14 +126,26 @@ getProducts().then(data => {
         removeCartItem.addEventListener("click", (e) => {
             cartDetails.remove();
             currentAmountItems.value = 0;
+            stockQuantity = singleData['stock_quantity'];
+            addBxCart.removeAttribute('disabled')
+            increaseQuantity.removeAttribute('disabled')
             call();
             removeLocalProduct();
+            console.log(stockQuantity)
         }); 
 
         increaseQuantity.addEventListener("click", () => {
             currentAmountItems.value++;
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            stockQuantity--;
+
+            if(stockQuantity == 0) {
+                addBxCart.setAttribute('disabled', 'disabled');
+                increaseQuantity.setAttribute('disabled', 'disabled');
+                alert("Out of stock!")
+            }
+
             addLocalProduct()
             call();
         })
@@ -133,8 +154,16 @@ getProducts().then(data => {
             currentAmountItems.value--;
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
+            stockQuantity++;
+            console.log(stockQuantity);
+
             addLocalProduct()
             call();
+
+            if(stockQuantity > 0) {
+                addBxCart.removeAttribute('disabled')
+                increaseQuantity.removeAttribute('disabled')
+            }
 
             if(currentAmountItems.value === 0) {
                 cartDetails.remove();
@@ -243,7 +272,6 @@ function cartWithProducts() {
             cart.classList.add("hide"); // gör att varukorg inte syns i DOM
             hiddenCart = true;
         }
-
 };
 
 let sum = 0;

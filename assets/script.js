@@ -1,6 +1,8 @@
 const productBoxEl = document.querySelector(".product-box");
 const shopContentEl = document.querySelector(".shop-content");
 const productImageEl = document.querySelector("#productImage");
+const currentProductsEl = document.querySelector(".antal-produkter-in-storage")
+const totalProductsEl = document.querySelector(".antal-produkter")
 
 const cartBoxEl = document.querySelector(".cart-box")
 const productCart = document.querySelector(".bx-cart");
@@ -20,6 +22,14 @@ const popOverlayEl = document.querySelector('#popOverlay');
 
 const totalPriceEl = document.querySelector(".total-price");
 const totalCostEl = document.getElementsByClassName("totalItemCost");
+
+let currentProducts = document.createElement("div");
+    currentProducts.classList.add("productshows")
+    currentProductsEl.appendChild(currentProducts);
+
+let totalProducts = document.createElement("div");
+    totalProducts.classList.add("productshows");
+    totalProductsEl.appendChild(totalProducts);
 
 getProducts().then(data => {
     data.forEach(singleData => {
@@ -90,8 +100,11 @@ getProducts().then(data => {
 
         if(inStock == 'outofstock') {
             addBxCart.setAttribute('disabled', 'disabled');
+            currentProducts.innerHTML = data.length - inStock.length + " av " + data.length + " finns i lager"
         }
-        
+
+        totalProducts.innerHTML = "Visar " + data.length + " produkter"
+
         addBxCart.addEventListener("click", () => {
 
             cartBoxEl.appendChild(cartDetails);
@@ -133,7 +146,6 @@ getProducts().then(data => {
             increaseQuantity.removeAttribute('disabled')
             call();
             removeLocalProduct();
-            console.log(stockQuantity)
         }); 
 
         increaseQuantity.addEventListener("click", () => {
@@ -141,7 +153,6 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             stockQuantity--;
-            console.log(stockQuantity);
 
             if(stockQuantity == 0) {
                 addBxCart.setAttribute('disabled', 'disabled');
@@ -158,7 +169,6 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
             stockQuantity++;
-            console.log(stockQuantity);
 
             addLocalProduct()
             call();

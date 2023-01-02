@@ -50,7 +50,10 @@
     padding: 10px 15px;
 }
 
-  
+.cart-content{
+    height: 500px;
+}
+ 
 #popOverlay {
     position: fixed;
     opacity: 0; 
@@ -62,7 +65,7 @@
     background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
 }
-  
+ 
 #popOverlay.active {
     opacity: 1; 
     pointer-events: all;
@@ -104,7 +107,6 @@ h1 {
     color: black;
     font-size: 50px;
     text-align: center;
-    max-width: 100%;
 }
 
 h3 {
@@ -127,7 +129,7 @@ h3 {
 .main-nav .meny{
     flex: 1;
     text-align: center;
-    color: black;  
+    color: black; 
     text-decoration: none;
 }
 
@@ -180,37 +182,26 @@ a:hover {
     /*right: -100%;*/ 
     right: 0;
     width: 450px;
-    max-width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     padding: 20px;
     background-color: gainsboro;
     z-index: 100;
     transition: 0.5s;
 }
 
-.cart-content {
-    height: 500px;
+ul {
+    flex: 1;
+    color: black; 
+    text-decoration: none;
 }
 
-@media screen and (max-width: 375px) {
-    .cart-content{
-        height: 350px;
-    }
-
-    .decrease-quantity {
-        margin: 0 70px 0 10px;
-    }
-
+.decrease-quantity{
+    margin: 0 120px 0 10px;
+    font-size: 24px;
 }
 
 .hide {
     display: none;
-}
-
-ul {
-    flex: 1;
-    color: black;  
-    text-decoration: none;
 }
 
 .cart-maintitle {
@@ -286,21 +277,22 @@ ul {
 
 
 .increase-quantity {
+ 
     border: 0px solid black;
     outline-color: black;
-    width: 2rem;
+    width: 2.5rem;
     text-align: center;
     font-size: 1rem;
 }
 
 
 .decrease-quantity {
+   
     border: 0px solid black;
     outline-color: black;
-    width: 2rem;
+    width: 2.5rem;
     text-align: center;
     font-size: 1rem;
-    margin: 0 120px 0 10px;
 }
 
 .totalItemCost {
@@ -312,7 +304,7 @@ ul {
     font-size: 20px;
     color: black;
     cursor: pointer;
-  
+ 
 }
 
 .total {
@@ -434,7 +426,7 @@ section {
 /* Div klass för varje produkt box */
 .product-box{
     position: relative;
-  
+ 
 }
 
 .product-box:hover{
@@ -505,11 +497,11 @@ section {
     width: 750px;
     max-width: 80%;
 }
-  
+ 
 .pop.active {
     transform: translate(-50%, -50%) scale(1);
 }
-  
+ 
 .popHeader {
     padding: 15px;
     display: flex;
@@ -517,13 +509,13 @@ section {
     align-items: center;
     border-bottom: 1px solid gainsboro;
 }
-  
+ 
 .popHeader .title {
     font-size: 1.25rem;
     font-weight: bold;
     text-align: center;
 }
-  
+ 
 .popHeader .close-button {
     cursor: pointer;
     border: none;
@@ -532,19 +524,17 @@ section {
     font-size: 1.25rem;
     font-weight: bold;
 }
-  
+ 
 .descriptionData {
     font-size: 13px;
     padding: 10px;
 }
-  
+ 
 #popUpImage {
-    display: flex;
-    justify-content: center;
     width: 70%;
     align-items: center;
 }
-    
+   
 #popOverlay {
     position: fixed;
     opacity: 0; 
@@ -556,7 +546,7 @@ section {
     background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
 }
-    
+   
 
 #popOverlay.active {
       opacity: 1; 

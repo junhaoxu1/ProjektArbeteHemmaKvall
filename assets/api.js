@@ -4,6 +4,6 @@ const getProducts = async () => {
         throw new Error(`${response.status} ${response.statusText}`);
     }
     const data = await response.json();
-
+    console.log(data);
     return data["data"];
 }

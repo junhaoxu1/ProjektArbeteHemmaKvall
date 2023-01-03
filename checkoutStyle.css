@@ -31,12 +31,15 @@ h1 {
     align-items: center;
 }
 
+.checkout-mainwrap {
+    
+    justify-content: center;
+}
 
 .checkout-content{
     display: block;
-    margin-left: 30%;
     margin-top: 100px;
-    align-items: center;
+    text-align:  center;
     justify-content: center;
 }
 
@@ -45,9 +48,9 @@ h1 {
 }
 
 .product-image{
-width: 100px;
-margin-top: 3%;
-margin-bottom: 2%;
+    width: 100px;
+    margin-top: 3%;
+    margin-bottom: 2%;
 }
 
 .clear-cart{
@@ -65,9 +68,18 @@ margin-bottom: 2%;
     display: grid;
     grid-template-columns: 2fr 5fr; /* 2 columns with equal width */
     grid-template-rows: auto; /* one row */
-    grid-gap: 20px; /* add a gap of 20px between cells */
+    grid-gap: 20px; 
     width: 50%;
+    justify-content: center;
     margin: auto;
     margin-bottom: 200px;
-  }
+    color: black;
+}
+
+.submit-btn {
+    background-color: rgb(98, 187, 255);
+    color: black;
+    margin-top: 20px;
+    padding: 20px;
+    border: 0px;
 }

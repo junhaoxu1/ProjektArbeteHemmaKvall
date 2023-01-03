@@ -100,7 +100,7 @@ getProducts().then(data => {
 
         if(inStock == 'outofstock') {
             addBxCart.setAttribute('disabled', 'disabled');
-            currentProducts.innerHTML = data.length - inStock.length + " av " + data.length + " finns i lager"
+            currentProducts.innerHTML = data.length - inStock.length + " av " + data.length + " produkter finns i lager"
         }
 
         totalProducts.innerHTML = "Visar " + data.length + " produkter"

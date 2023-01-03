@@ -35,12 +35,9 @@ const sortProducts = (sortOption) => {
           data.sort((a, b) => a.name.localeCompare(b.name));
           break;
         case "3":
-          data.sort((a, b) => b.stock_quantity - a.stock_quantity);
-          break;
-        case "4":
           data.sort((a, b) => a.price - b.price);
           break;
-        case "5":
+        case "4":
           data.sort((a, b) => b.price - a.price);
           break;
         default:

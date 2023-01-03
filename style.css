@@ -350,6 +350,11 @@ ul {
 
 .btn-buy:hover {
     background-color: green;
+    color: white;
+}
+
+.go-to-cart-btn:hover {
+    background-color: green;
 }
 
 #close-cart {

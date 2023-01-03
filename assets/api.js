@@ -7,3 +7,5 @@ const getProducts = async () => {
     console.log(data);
     return data["data"];
 }
+
+

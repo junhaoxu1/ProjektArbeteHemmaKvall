@@ -7,3 +7,20 @@ const getProducts = async () => {
 
     return data["data"];
 }
+
+const confirmBuy = async (data) => {
+    const response = await fetch('https://www.bortakvall.se/api/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+    }
+    
+    return await response.json()
+
+}

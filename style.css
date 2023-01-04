@@ -1,11 +1,3 @@
-.col {
-    flex-basis: 25%;
-    width: 300px;
-    max-width: 300px;
-    border: 0.1px solid black;
-    margin: 5px 0 0 5px;
-}
-
 .pop {
     position: fixed;
     top: 50%;
@@ -50,13 +42,10 @@
     padding: 10px 15px;
 }
 
-.cart-content{
-    height: 500px;
-}
  
 #popOverlay {
     position: fixed;
-    opacity: 0; 
+    opacity: 0;
     transition: 200ms ease-in-out;
     top: 0;
     left: 0;
@@ -67,7 +56,7 @@
 }
  
 #popOverlay.active {
-    opacity: 1; 
+    opacity: 1;
     pointer-events: all;
 }
 
@@ -95,6 +84,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 h1 {
@@ -107,6 +97,7 @@ h1 {
     color: black;
     font-size: 50px;
     text-align: center;
+    max-width: 100%;
 }
 
 h3 {
@@ -120,6 +111,7 @@ h3 {
     justify-content: space-evenly;
     background-color: rgb(255, 255, 255);
     padding: 50px;
+    border-top: 1px solid rgb(185, 185, 185);
     border-bottom: 1px solid rgb(185, 185, 185);
     /*border: 1px solid black;*/
     /*box-shadow: 0px 0.1px 1px 1px; */
@@ -128,7 +120,7 @@ h3 {
 .main-nav .meny{
     flex: 1;
     text-align: center;
-    color: black; 
+    color: black;  
     text-decoration: none;
 }
 
@@ -185,7 +177,7 @@ a:hover {
     min-height: 100%;
     padding: 20px;
     background-color: white;
-    border: 5px solid rgb(98, 187, 255);
+    border: 1px solid black;
     border-radius: 5px;
     z-index: 100;
     transition: 0.5s;
@@ -196,24 +188,24 @@ a:hover {
 }
 
 @media screen and (max-width: 375px) {
-    .cart-content {
-    height: 350px;
-}
-}
+    .cart-content{
+        height: 350px;
+    }
 
-ul {
-    flex: 1;
-    color: black; 
-    text-decoration: none;
-}
+    .decrease-quantity {
+       
+    }
 
-.decrease-quantity{
-    margin: 0 120px 0 10px;
-    font-size: 24px;
 }
 
 .hide {
     display: none;
+}
+
+ul {
+    flex: 1;
+    color: black;  
+    text-decoration: none;
 }
 
 .cart-maintitle {
@@ -289,22 +281,21 @@ ul {
 
 
 .increase-quantity {
- 
     border: 0px solid black;
     outline-color: black;
-    width: 2.5rem;
+    width: 2rem;
     text-align: center;
     font-size: 1rem;
 }
 
 
 .decrease-quantity {
-   
     border: 0px solid black;
     outline-color: black;
-    width: 2.5rem;
+    width: 2rem;
     text-align: center;
     font-size: 1rem;
+    margin: 0 120px 0 10px;
 }
 
 .totalItemCost {
@@ -348,9 +339,9 @@ ul {
     cursor: pointer;
 }
 
+
 .btn-buy:hover {
     background-color: green;
-    color: white;
 }
 
 .go-to-cart-btn:hover {
@@ -474,6 +465,7 @@ section {
     bottom: 0;
     right: 0;
     background-color: black;
+    border: 0px solid black;
     color: white;
     padding: 10px;
     cursor: pointer;
@@ -482,6 +474,7 @@ section {
 .add-cart:hover{
     color: rgb(255, 255, 255);
     background-color: rgb(56, 217, 24);
+    border: 0px;
 }
 
 
@@ -554,7 +547,7 @@ section {
    
 #popOverlay {
     position: fixed;
-    opacity: 0; 
+    opacity: 0;
     transition: 200ms ease-in-out;
     top: 0;
     left: 0;
@@ -566,6 +559,10 @@ section {
    
 
 #popOverlay.active {
-      opacity: 1; 
+      opacity: 1;
       pointer-events: all;
 }
+
+
+
+

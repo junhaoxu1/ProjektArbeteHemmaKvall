@@ -318,7 +318,7 @@ let call = () => {
             sum += parseInt(totalCostEl[i].innerHTML)
         }
     }
-    totalPriceEl.innerText = "Total Summa: " + sum + " SEK"
+    totalPriceEl.innerText = "Totalt: " + sum + " SEK"
     sum = 0;
 }
 

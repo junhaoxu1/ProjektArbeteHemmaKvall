@@ -2,19 +2,39 @@ const containerEl = document.querySelector(".container");
 const totalCostEl = document.getElementsByClassName("totalItemCost");
 const totalPriceEl = document.querySelector(".total-price");
 
+let fName = document.querySelector("#first-name");
+let lName = document.querySelector("#last-name");
+let mail = document.querySelector("#email");
+let city = document.querySelector("#city");
+let postCode = document.querySelector("#postal-code");
+let phoneNumber = document.querySelector("#phone-nr");
+let adress = document.querySelector("#address");
+let orderTotal = document.querySelector("#ordertotal");
+
+
 function getLocal() {
-   let products = JSON.parse(localStorage.getItem('data')) || [];
+   let products = JSON.parse(localStorage.getItem('data') || []);
    return products;
 }
 
-function setLocal(localData) {
-   localStorage.setItem('data', JSON.stringify(localData))
+function getLocalInfo() {
+    let productInfo = JSON.parse(localStorage.getItem('itemInfo') || []);
+    return productInfo;
 }
 
+function setLocal(localDataInfo) {
+   localStorage.setItem('data', JSON.stringify(localDataInfo))
+}
+
+function setLocalInfo(localData) {
+    localStorage.setItem('itemInfo', JSON.stringify(localData))
+}
 
 const checkOutData = getLocal();
 
-checkOutData.forEach(singleItem => {
+const checkOutInfo = getLocalInfo();
+
+checkOutInfo.forEach(singleItem => {
 
 let checkOutColumn = document.createElement("div");
     checkOutColumn.classList.add("col");
@@ -37,7 +57,7 @@ let checkOutImage = document.createElement("img");
 
 let currentAmountItems = document.createElement("li");
     currentAmountItems.classList.add("currentAmount");
-    currentAmountItems.value = singleItem['quantity'];
+    currentAmountItems.value = singleItem['qty'];
 
 let totalItemPrice = document.createElement("li");
     totalItemPrice.classList.add("totalItemCost");
@@ -52,7 +72,7 @@ let removeCartItem = document.createElement("i");
                 sum += parseInt(totalCostEl[i].innerHTML)
             }}
             if (sum > 0) {
-               totalPriceEl.innerText = "Total Summa: " + sum + " SEK";
+               totalPriceEl.innerText = "Totalt: " + sum + " SEK";
                sum = 0;
             } else {
                totalPriceEl.innerText = "Din varukorg Är Tom";
@@ -79,7 +99,7 @@ let removeCartItem = document.createElement("i");
             checkOutImage.src = `https://bortakvall.se${singleItem['thumbnail']}`
             checkOutName.innerText = `${singleItem.name}`
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
-            totalItemPrice.innerText = `${singleItem['price']} SEK`
+            totalItemPrice.innerText = `${singleItem['item_total']} SEK`
             showCost();
 
             removeCartItem.addEventListener("click", () => {
@@ -89,16 +109,44 @@ let removeCartItem = document.createElement("i");
                 removeLocalProduct();
             }); 
    
-           function removeLocalProduct() {
-           let id = singleItem['id'];
-           let storageProducts = JSON.parse(localStorage.getItem('data'));
-           let products = storageProducts.filter(data => data.id !== id );
-           localStorage.setItem('data', JSON.stringify(products));
-           };
-
-           async function random() {
-            const info = await confirmBuy();
-            console.log(info)
-          }
-          random()
+            function removeLocalProduct() {
+                let product_id = singleItem['product_id'];
+                let storageProducts = JSON.parse(localStorage.getItem('data'));
+                let storageProduct = JSON.parse(localStorage.getItem('itemInfo'));
+                let products = storageProducts.filter(data => data.product_id !== product_id);
+                let productInfo = storageProduct.filter(data => data.product_id != product_id);
+                localStorage.setItem('data', JSON.stringify(products));
+                localStorage.setItem('itemInfo', JSON.stringify(productInfo));
+            };
     });
+
+    const checkOutFormEl = document.querySelector("#checkout-form");
+
+        let totalQuantity = 0;
+
+        checkOutInfo.forEach(data => {
+            totalQuantity += data.item_total
+        })
+
+        checkOutFormEl.addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+                const customer =  {
+                    "customer_first_name" : fName.value,
+                    "customer_last_name" : lName.value,
+                    "customer_address" : adress.value,
+                    "customer_postcode" : postCode.value,
+                    "customer_city" : city.value,
+                   "customer_email" : mail.value,
+                   "customer_phone" : phoneNumber.value,
+                    "order_total" : totalQuantity,
+                    "order_items" : checkOutInfo
+                }   
+
+                try {
+                    console.log(await confirmBuy(customer))
+                } catch (error) {
+                    console.log(error)
+
+                }
+        })  

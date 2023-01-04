@@ -78,13 +78,13 @@
 
 .banner {
     background-color: rgb(211, 219, 219);
-    background-image: url(./img/godisbanner1.jpg);
+    background-image: url(../img/godisbanner1.jpg);
     width: 100%;
     height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
-   
+    margin-bottom: 5%;
 }
 
 h1 {
@@ -176,11 +176,10 @@ a:hover {
     max-width: 100%;
     min-height: 100%;
     padding: 20px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
+    background-color: gainsboro;
     z-index: 100;
     transition: 0.5s;
+    border-radius: 5px;
 }
 
 .cart-content {
@@ -190,10 +189,11 @@ a:hover {
 @media screen and (max-width: 375px) {
     .cart-content{
         height: 350px;
+
     }
 
     .decrease-quantity {
-       
+       display: inline-block;
     }
 
 }
@@ -339,12 +339,7 @@ ul {
     cursor: pointer;
 }
 
-
 .btn-buy:hover {
-    background-color: green;
-}
-
-.go-to-cart-btn:hover {
     background-color: green;
 }
 
@@ -465,7 +460,6 @@ section {
     bottom: 0;
     right: 0;
     background-color: black;
-    border: 0px solid black;
     color: white;
     padding: 10px;
     cursor: pointer;
@@ -474,7 +468,6 @@ section {
 .add-cart:hover{
     color: rgb(255, 255, 255);
     background-color: rgb(56, 217, 24);
-    border: 0px;
 }
 
 
@@ -561,4 +554,129 @@ section {
 #popOverlay.active {
       opacity: 1;
       pointer-events: all;
+}
+
+
+
+.col {
+    flex-basis: 25%;
+    width: 215px;
+    max-width: 100%;
+    border: 0.1px solid black;
+    margin: 10px 0 0 10px;
+    display: inline-block;
+}
+
+
+.rows {
+   padding: 5%;
+}
+
+/*UL*/
+.checkOutList {
+    font-size: 14px;
+
+}
+
+/*LI */
+.checkOutName {
+
+}
+
+/* LI */
+.checkOutPrice {
+
+}
+
+/*IMG*/
+.checkOutImage {
+    width: 190px;
+    height: 190px;
+}
+
+/*LI*/
+.currentAmount {
+
+}
+
+/*LI */
+.totalItemCost {
+    font-size: 17px;
+}
+
+.total-price {
+    font-size: 25px;
+    margin: 5%;
+    text-align: center;
+}
+
+/* Soptunna */
+.bx {
+
+}
+
+.bxs-trash-alt {
+
+}
+
+.cart-remove {
+
+}
+
+
+
+input {
+    width: 40%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    margin-left: 30%;
+}
+
+label {
+    margin-left: 30%;
+}
+
+.submit-btn {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+
+}
+
+
+@media screen and (max-width: 375px) {
+
+    .col {
+        margin-left: 18%;
+        margin-bottom: 5%;
+    }
+
+    .total-price {
+        margin-bottom: 10%;
+    }
+
+    input {
+        width: 60%;
+        margin-left: 20%;
+     
+    }
+
+    label {
+        margin-left: 20%;
+    }
+   
+
+    .submit-btn {
+        margin-top: 5%;
+        margin-bottom: 10%;
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+    }
+
 }

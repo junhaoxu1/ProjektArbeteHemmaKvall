@@ -23,9 +23,6 @@ const confirmBuy = async (data) => {
             throw new Error(`${response.status} ${response.statusText}`);
         }
     
-        console.log(response);
-        console.log(data);
-    
         return await response.json();
 
     } catch (err) {

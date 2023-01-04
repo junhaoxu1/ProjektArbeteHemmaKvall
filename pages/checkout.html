@@ -22,20 +22,29 @@
     
         <form id="checkout-form">
             <label for="first-name">Namn:</label><br>
-            <input type="text" id="first-name" name="first-name" required><br>
+            <input type="text" id="first-name" name="customer_first_name" required><br>
             <label for="last-name">Efternamn:</label><br>
-            <input type="text" id="last-name" name="last-name" required><br>
+            <input type="text" id="last-name" name="customer_last_name" required><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="customer_email" required><br>
             <label for="address">Adress:</label><br>
-            <input type="text" id="address" name="address" required><br>
+            <input type="text" id="address" name="customer_address" required><br>
             <label for="city">Ort:</label><br>
-            <input type="text" id="city" name="city" required><br>
+            <input type="text" id="city" name="customer_city" required><br>
             <label for="postal-code">Postnummer:</label><br>
-            <input type="text" id="postal-code" name="postal-code" required><br>
+            <input type="text" id="postal-code" name="customer_postcode" required><br>
             <label for="phone-nr" id="phone">Mobil:</label><br>
             <input type="number" id="phone-nr" name="phone-nr"><br>
-            <input class="submit-btn" type="submit" value="SKICKA ORDER">
+
+            <label for="order-tot">Ordertotal:</label><br>
+            <input type="text" id="ordertotal" name="order_total" required><br>
+
+            <label for="order-items">Order items:</label><br>
+            <input type="number" id="ordertotal" name="order_items"><br>
+
+            <input class="submit-btn" type="submit" value="SKICKA ORDER" name="SKICKA ORDER">
+
+
           </form> 
         
     </main>

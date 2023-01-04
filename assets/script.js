@@ -127,7 +127,7 @@ getProducts().then(data => {
             currentAmountItems.innerText = "Antal: " + currentAmountItems.value;
             totalItemPrice.innerText = `${singleData['price']} SEK`
             totalItemPrice.innerText = `${singleData['price'] * currentAmountItems.value} SEK`
-            
+
                 if(stockQuantity == 0) {
                     addBxCart.setAttribute('disabled', 'disabled');
                     increaseQuantity.setAttribute('disabled', 'disabled');

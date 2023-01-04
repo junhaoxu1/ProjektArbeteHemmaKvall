@@ -11,6 +11,7 @@ function setLocal(localData) {
    localStorage.setItem('data', JSON.stringify(localData))
 }
 
+
 const checkOutData = getLocal();
 
 checkOutData.forEach(singleItem => {
@@ -94,4 +95,10 @@ let removeCartItem = document.createElement("i");
            let products = storageProducts.filter(data => data.id !== id );
            localStorage.setItem('data', JSON.stringify(products));
            };
+
+           async function random() {
+            const info = await confirmBuy();
+            console.log(info)
+          }
+          random()
     });

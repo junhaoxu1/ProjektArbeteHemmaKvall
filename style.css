@@ -184,7 +184,7 @@ a:hover {
 }
 
 .cart-content {
-    height: 500px;
+    height: 350px;
 }
 
 @media screen and (max-width: 375px) {
@@ -541,7 +541,7 @@ section {
 }
  
 #popUpImage {
-    width: 70%;
+    width: 30%;
     align-items: center;
 }
    

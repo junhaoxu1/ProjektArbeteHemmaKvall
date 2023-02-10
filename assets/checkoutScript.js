@@ -140,7 +140,7 @@ let removeCartItem = document.createElement("i");
                    "customer_email" : mail.value,
                    "customer_phone" : phoneNumber.value,
                     "order_total" : totalQuantity,
-                    "order_items" : checkOutInfo
+                    "order_items" : checkOutData
                 }   
 
                 try {

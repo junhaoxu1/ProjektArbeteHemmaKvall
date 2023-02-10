@@ -28,7 +28,7 @@
             <div class="cart hide">
                 <h2 class="cart-maintitle">Varukorg</h2>
                 <div class="cart-content">
-                    <div class="cart-box" scrollable="true">
+                    <div class="cart-box">
                     </div>
                 </div>
                     <!-- Total pris placeras här -->
@@ -36,7 +36,9 @@
                         <div class="total-price">Total:</div>
                     </div>
                     <!-- KÖP knapp -->
-                    <button id="checkOutButton" type="button" class="btn-buy"><a class="go-to-cart-btn" href="./pages/checkout.html">GÅ TILL KASSAN</a></button>
+                    <div id="checkOutButton" class="btn-buy">
+                        <a class="go-to-cart-btn" href="./pages/checkout.html">GÅ TILL KASSAN</a>
+                    </div>
         
                     <!-- Symbol stänga kundvagn -->
                     <i class="bx bx-x" id="close-cart"></i>
@@ -81,13 +83,11 @@
                     </div>
                     <div>
                         <div class="descriptionData"></div>
-                        <img id="popUpImage"> </img>
+                        <img id="popUpImage" src="#" alt="popUpCandy">
                     </div>
                 </div>
                   
                 <div id="popOverlay"></div>
-            
-            </div>
 
         </section>     
 

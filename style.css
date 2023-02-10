@@ -187,6 +187,12 @@ a:hover {
     height: 350px;
 }
 
+.go-to-cart-btn {
+    margin-left: 12%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 375px) {
     .cart-content{
         height: 350px;

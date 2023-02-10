@@ -186,7 +186,7 @@ a:hover {
     height: 500px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 360px) {
     .cart-content{
         height: 350px;
 
@@ -652,7 +652,7 @@ label {
 }
 
 
-@media screen and (max-width: 375px) {
+@media screen and (min-width: 360px) {
 
     .col {
         margin-left: 18%;
@@ -681,6 +681,68 @@ label {
         background-color: green;
         color: white;
         margin-left: 35%;
+    }
+
+}
+
+@media screen and (min-width: 410px) {
+
+    .col {
+        margin-left: 25%;
+        margin-bottom: 5%;
+    }
+
+}
+
+@media screen and (min-width: 520px) {
+
+    .col {
+        margin-left: 30%;
+        margin-bottom: 5%;
+    }
+
+}
+
+@media screen and (min-width: 610px) {
+
+    .col {
+        margin-left: 5%;
+        margin-bottom: 5%;
+    }
+
+
+    .submit-btn {
+        margin-top: 5%;
+        margin-bottom: 10%;
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+        margin-left: 40%;
+    }
+
+}
+@media screen and (min-width: 800px) {
+
+    .submit-btn {
+        margin-top: 5%;
+        margin-bottom: 10%;
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+        margin-left: 43%;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .submit-btn {
+        margin-top: 5%;
+        margin-bottom: 10%;
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+        margin-left: 45%;
     }
 
 }

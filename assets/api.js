@@ -11,7 +11,7 @@ const getProducts = async () => {
 const confirmBuy = async (data) => {
     try {
       
-      const response = await fetch('http://localhost:3000/orders', 
+      const response = await fetch('https://www.bortakvall.se/api/orders', 
       {
         method: 'POST',
         headers: {
